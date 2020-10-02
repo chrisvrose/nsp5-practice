@@ -4,7 +4,7 @@ int main(int argc, char **argv)
 {
     printf("I>Hello world\n");
     if(argc<2){
-        printf("GIB ADDRESS");
+        printf("E>No addr\n");
         return E_F;
     }
     int sockfd = socket(AF_INET, SOCK_STREAM, 0);
@@ -25,20 +25,27 @@ int main(int argc, char **argv)
     };
     if (inet_pton(AF_INET, argv[1], &(address.sin_addr)) < 0)
     {
-        printf("E>Could not get self addr");
+        printf("E>Could not get self addr\n");
         return E_F;
     };
 
 
     if ( connect(sockfd, (struct sockaddr *)&address, sizeof address) < 0)
     {
-        printf("E>Failed connect, cri");
+        printf("E>Failed connect, cri\n");
         return E_F;
     }
-    char buffer[] = "Hello buddy how are you";int n;
-    while((n = send(sockfd,buffer,sizeof buffer,0))>0){
+
+    char buffer[3276700];int n,ts=0;
+    fgets(buffer,3276700,stdin);
+    printf("I>READ(%d)\n",strlen(buffer));
+    while((n = send(sockfd,buffer+ts,strlen(buffer),0))>0){
         // buffer[n] = 0;
-        printf("Wrote %d chars",n);
+        printf("I>Wrote %d chars\n",n);
+        ts+=n;
+        if(ts>=strlen(buffer)){
+            break;
+        }
     }
 
     close(sockfd);

@@ -50,6 +50,7 @@ int main(void)
         {
             printf("%c ", buffer[i]);
         }
+        fflush(NULL);
         printf("\n");
     }
 

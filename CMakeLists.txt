@@ -19,5 +19,12 @@ set(SRC_DEFS
 )
 add_executable(defclient ${SRC_DEFS})
 
+# Standard tcp client
+# set(SRC_ECHOS
+#     src/echoserver.c
+# )
+# add_executable(echoserver ${SRC_ECHOS})
+
+
 
 
