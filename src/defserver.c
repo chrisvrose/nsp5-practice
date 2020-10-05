@@ -19,7 +19,7 @@ int main(void)
     struct sockaddr_in address = {
         .sin_family = AF_INET,
         .sin_addr = {.s_addr = INADDR_ANY},
-        .sin_port = htons(3000)};
+        .sin_port = htons(PORT)};
 
     if (bind(sockfd, (struct sockaddr *)&address, sizeof(address)) < 0)
     {

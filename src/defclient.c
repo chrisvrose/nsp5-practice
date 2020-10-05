@@ -21,7 +21,7 @@ int main(int argc, char **argv)
     //init structure
     struct sockaddr_in address = {
         .sin_family = AF_INET,
-        .sin_port = htons(3000),
+        .sin_port = htons(PORT),
     };
     if (inet_pton(AF_INET, argv[1], &(address.sin_addr)) < 0)
     {
