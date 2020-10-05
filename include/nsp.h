@@ -8,6 +8,9 @@
 #include<sys/socket.h>
 #include<netinet/in.h>
 #include<arpa/inet.h>
+#include<signal.h>
+#include<sys/resource.h>
+#include<sys/wait.h>
 #include<unistd.h>
 #define E_S EXIT_SUCCESS
 #define E_F EXIT_FAILURE
