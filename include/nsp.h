@@ -12,4 +12,6 @@
 #define E_S EXIT_SUCCESS
 #define E_F EXIT_FAILURE
 
+#define PORT 3000
+
 #endif
