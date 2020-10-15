@@ -19,15 +19,40 @@ set(SRC_DEFS
 )
 add_executable(defclient ${SRC_DEFS})
 
-# Standard tcp client
+
+# Echo client
 set(SRC_EC
     src/ec.c
 )
 add_executable(ec ${SRC_EC})
 
+# Echo server -> concurrent
 set(SRC_ES
     src/es.c
 )
 add_executable(es ${SRC_ES})
 
 
+# Timeclient
+set(SRC_TC
+    src/tc.c
+)
+add_executable(tc ${SRC_TC})
+
+set(SRC_TS
+    src/ts.c
+)
+add_executable(ts ${SRC_TS})
+
+
+set(SRC_FS
+    src/fs.c
+)
+add_executable(fs ${SRC_FS})
+
+
+
+set(SRC_FC
+    src/fc.c
+)
+add_executable(fc ${SRC_FC})
