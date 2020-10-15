@@ -8,7 +8,7 @@ int main(void)
     int sockfd = socket(AF_INET, SOCK_STREAM, 0);
     if (sockfd < 0)
     {
-        printf("E>Failed to allocate socket");
+        printf("E>Failed to allocate socket\n");
         return E_F;
     }
     else
@@ -24,13 +24,13 @@ int main(void)
 
     if (bind(sockfd, (struct sockaddr *)&address, sizeof(address)) < 0)
     {
-        printf("E>failed to bind");
+        printf("E>failed to bind\n");
         return E_F;
     }
 
     if (listen(sockfd, 2) < 0)
     {
-        printf("E>Failed to set to listen mode");
+        printf("E>Failed to set to listen mode\n");
         return E_F;
     }
 
@@ -45,17 +45,19 @@ int main(void)
         time_t t = time(NULL);
         char* ptr = ctime(&t);
         if(!ptr){
-            printf("E>Failed to get time");continue;
+            printf("E>Failed to get time\n");
+            close(newSock);
+            continue;
         }
         i=0,j=0;
-        while((i=write(sockfd,ptr+j,TBS-j))>0){
+        printf("%d>Got time %s\n",newSock,ptr);
+        while((i=write(newSock,ptr+j,TBS-j))>0){
             j+=i;
             if(j==TBS) break;
         }
+        printf("%d>Sent time %s\n",newSock,ptr);
+        close(newSock);
     }
-
-    
-    ssize_t readVal;
     
     
 

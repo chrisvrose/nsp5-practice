@@ -36,15 +36,16 @@ int main(int argc, char **argv)
         return E_F;
     }
 
-    char buffer[28];int n,ts=0;
+    char buffer[TBS+1];int n,ts=0;
     int i=0,j=0;
 
-    while((i=read(sockfd,buffer+j,28-j)>0)){
+    while((i=read(sockfd,buffer+j,28-j))>0){
         j+=i;
         if(j==TBS) break;
     }
+    buffer[j+1]=0;
 
-    printf("T>%s",buffer);
+    printf("T>%s\n",buffer);
 
     close(sockfd);
 

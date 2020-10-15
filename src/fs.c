@@ -46,7 +46,7 @@ int respond(int connectfd)
         j = read(fd, buf2 + l, 1500 - l);
         l += j;
         
-        buf2[l]=0;
+        buf2[l+1]=0;
         i = write(connectfd, buf2 + k, 1500 - k);
         if (i == 0)
             break;
